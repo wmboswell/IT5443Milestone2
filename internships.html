@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+    
+
+ <link rel="stylesheet" type="text/css" href="milestone1.css">
+
+<head>
+  <title>Internships</title>
+  <script type="text/javascript">
+
+        //This function selects which form to show user and hides the other.
+    function showForm(id) { 
+      if(id === 'Gform') { 
+        document.getElementById('UGform').hidden = true; 
+      } else {
+        document.getElementById('Gform').hidden = true; 
+      }
+      document.getElementById(id).hidden = false; 
+    }
+      //This function converts letter grade to numeric value using a switch statement.
+    function gradeValue(grade) { 
+      switch(grade) { 
+        case 'A':
+          return 4.0
+        case 'B':
+          return 3.0
+        case 'C':
+          return 2.0
+        case 'D':
+          return 1.0
+        default:
+          return 0.0
+      }
+    }
+          // This function submits entire form. set var to hold grade total. Checks which form is sent and courses for that status. Set the letter grade to numeric for calculation. Calculates avg grade.
+    function submitGrades(event) { 
+      event.preventDefault();
+      var ids = [];
+      var total = 0; 
+      if(event.target.parentNode.id === 'UGform') { 
+        ids.push(1,2,3,4); 
+      } else {
+        ids.push(5,6,7,8); 
+      }
+      ids.forEach(function(id) { 
+        
+        var letter = document.getElementById('Course' + id).value;
+        total += gradeValue(letter); 
+      });
+      
+      var avg = total / ids.length;
+      
+      var resultElement = document.getElementById('result');
+    
+      if(avg >= 3.2) { 
+        resultElement.innerHTML = "<b> Your GPA is greater than 3.2.  You qualify to complete the application. You can apply here: <a>[Application link]</a></b>"; 
+      } else {
+        resultElement.innerHTML = "<b>Your GPA is below 3.2. You have not met the minimun requirements. Thanks for applying.</b>"; 
+      }
+    }
+  // This function validates the grades from user through Id. It makes grade uppercase, alerts user if invalid and clears textbox
+    function validateGrade(id) { 
+      var validGrades = ['A','B','C','D','F']; //Array 
+      var gradeElement = document.getElementById('Course' + id); 
+      var grade = gradeElement.value.trim().toUpperCase(); 
+     
+      if(!validGrades.includes(grade)) {
+        alert('Grade entered is not valid'); 
+        gradeElement.value = "";
+      } else {
+        gradeElement.value = grade;
+      }
+    }
+  </script>
+</head>
+    <body>
+
+        <div id="container">
+            <div id="header"> <a href="http://ccse.kennesaw.edu/it">
+<img border="0" alt="Kennesaw University Logo" src="images/logo.png" width="200" height="60"></a>
+
+<br><h1 align="center">Kennesaw State University</h1>
+<h2 align="center">Center Applied Research Information Technology</h2><br>
+</div>
+
+
+
+
+<!-- 
+
+-->
+<div>
+ <table>
+  <tr>
+    <th> <a href="index.html">Home</a> </th>
+    <th><a href="aboutus.html">About Us</a> </th>
+    <th><a href="resources.html">Resources</a></th>
+    <th><a href="Internships.html">Internships</a></th>
+    </tr>
+</table>
+
+
+        </div><br><br><br>
+            
+            <div id="sidebar">
+<h2 align="center">CARIT News</h2>
+                <ul> <li> <p><a href="https://news.kennesaw.edu/stories/2018/graduate_software_engineering.php/">A World of Opportunity</a></p></li><br>
+
+             <li><p><a href="https://news.kennesaw.edu/stories/2018/graduate_information_technology.php">Data Impact</a></p> </li><br>
+
+                <li><p><a href="https://news.kennesaw.edu/stories/2018/hackathon_2018.php">Computing Against The Clocks</a></p> </li>
+
+      </ul>
+
+    </div>
+
+    <body>
+
+<div class="grid-container">
+  <div id="divheader">
+    <h1 align="center">CARIT Internships</h1>
+    <p>This page is for students wanting to apply for a CARIT internship. </p>
+  </div><br><br><br>
+
+
+<body>
+
+  <!-- This form is first name, last name and status level for user. -->
+  <div>
+    <p>Please complete this form for an internship.</p><br><br>
+    <form name=Name_Status_Form>
+      First name:<br>
+      <input type="text" name="fname">
+      <br>
+      Last name:<br>
+      <input type="text" name="lname">
+      <br><br>
+      <p>Please select your degree status. A new form will appear for your completion.</p>
+      <br>
+      <input type="radio" name="gradelevel" onclick="showForm('UGform')"> Undergraduate<br><br>
+      <input type="radio" name="gradelevel" onclick="showForm('Gform')"> Graduate<br>
+    </form>
+    <br><br>
+  </div>
+  <!--UG student form with courses for input from user hidden -->
+  <div>
+    <form hidden id="UGform">
+
+      <p>You selected undergraduate status. Please enter letter grades for the following courses.</p>
+      <p><b>Undergraduate Courses:</b></p>
+
+      CSE 3203: Mobile System Overview:<br>
+      <input type="text" id="Course1" onchange="validateGrade('1')" value="" maxlength="4" size="3">
+      <br> <br>
+      IT 4213: Mobile Web Development:<br>
+      <input type="text" id="Course2" onchange="validateGrade('2')" value="" maxlength="4" size="3">
+      <br> <br>
+      1113:Programming Principles:<br>
+      <input type="text" id="Course3" onchange="validateGrade('3')" value="" maxlength="4" size="3">
+      <br> <br>
+      IT 3203:Introduction to Web Development:<br>
+      <input type="text" id="Course4" onchange="validateGrade('4')" value="" maxlength="4" size="3">
+      <br> <br>
+      <input type="submit" value="Submit" onclick="submitGrades(event)">
+    </form>
+
+  </div>
+ <!--Gform graduate student form with courses for input from user hidden -->
+  <div>
+    <form hidden id="Gform">
+       <p>You selected graduate status. Please enter letter grades for the following courses.</p>
+      <p><b>Graduate Courses:</b></p>
+      IT 6713: Business Intelligence:<br>
+      <input type="text" id="Course5" onchange="validateGrade('5')" value="" maxlength="4" size="3">
+      <br> <br>
+      IT 7113: Data Visualization:<br>
+      <input type="text" id="Course6" onchange="validateGrade('6')" value="" maxlength="4" size="3">
+      <br> <br>
+      IT 6753:Advanced Web Development:<br>
+      <input type="text" id="Course7" onchange="validateGrade('7')" value="" maxlength="4" size="3">
+      <br> <br>
+      IT 6203:IT Design Studio:<br>
+      <input type="text" id="Course8" onchange="validateGrade('8')" value="" maxlength="4" size="3">
+      <br> <br>
+      <input type="submit" value="Submit" onclick="submitGrades(event)">
+    </form>
+  </div>
+  <br>
+  <!--Sends output to user on page either complete application or alert thanks for your interest. -->
+  <div id="result"></div>
+</body>
+
+</html>

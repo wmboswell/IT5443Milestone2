@@ -1,0 +1,152 @@
+
+
+
+
+
+
+
+
+
+
+
+ol{
+  list-style-type: upper-roman;
+}
+
+
+
+table {
+  font-family: arial;
+ border-collapse: collapse; 
+ border: 2px solid black;
+  width: 100%;
+}
+
+td, th {
+  border: 2px solid black;
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddfff;
+}
+
+table, th, td {
+
+}
+
+
+
+
+a {
+  color: black;
+}
+    
+#header
+    {
+        background-color: #fffddd;
+       
+    }
+
+
+body
+
+{
+
+
+    background-color: #fffddd;
+}
+
+#menu1
+
+{
+ background-color: #fffddd;
+    width: 100%;
+    text-align:center;
+    margin: 2px;
+    padding: 30;
+    border-top: thin solid: none;
+    display: inline-block; 
+   /* overflow: auto; */
+
+
+
+
+
+
+
+}
+
+table a:link { text-decoration:none; padding:0px; margin:0;
+    color: #5E7830;
+    display: block;
+     background-color: #fffddd;
+}
+
+
+
+table a:hover { background-color:bisque; color: #26370A;}
+
+        div
+        {
+            border: 33px;
+            
+            margin: 35px;
+            
+            width: 100%;
+             background-color: #fffddd;
+           
+        }
+
+
+ #container
+        {
+            width: 100%;
+
+
+            height: 100px;
+            margin: auto;
+             background-color: #fffddd;
+            
+        }
+        
+        #sidebar
+        {
+            width: 200px;
+            float: left;
+            margin: 32px;
+            padding: 10;
+            height: 1000px;
+             background-color: #fffddd;
+            
+        }
+
+#sidebar a:hover { background-color: bisque; color: #26370A;}
+
+        div
+        {
+            border: 1px;
+            
+            margin: 5px;
+            
+            width: 100%;
+             background-color: #fffddd;
+           
+        }
+
+
+
+
+
+
+
+
+        
+        #main
+        {
+            margin-left: 275px;
+            
+            background-color: #fffddd;
+            height: 1000px;
+        }
